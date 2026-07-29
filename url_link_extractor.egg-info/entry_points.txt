@@ -1,0 +1,2 @@
+[console_scripts]
+url-link-extractor = url_link_extractor.cli:main

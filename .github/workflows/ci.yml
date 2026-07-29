@@ -1,8 +1,9 @@
-name: Java CI 构建检查
+name: Python CI 构建检查
 on:
   push:
     branches:
       - develop
+      - main
   pull_request:
     branches:
       - main
@@ -13,11 +14,14 @@ jobs:
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
         with:
-          java-version: '17'
-          distribution: 'temurin'
-          cache: maven
-      - name: Build and Test with Maven
-        run: mvn clean compile test -B
+          python-version: '3.12'
+          cache: pip
+      - name: Install dependencies
+        run: pip install -e ".[dev]"
+      - name: Lint with ruff
+        run: ruff check url_link_extractor tests
+      - name: Run tests
+        run: pytest tests/ -v

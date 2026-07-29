@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "url-link-extractor"
+version = "0.1.0"
+description = "URL 链接标题批量提取组件：按 URL 前缀发现匹配网页链接并提取 <title>，导出 result.xlsx"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "url-link-extractor"}]
+dependencies = [
+    "httpx>=0.27.0,<0.28.0",
+    "selectolax>=0.3.0,<0.4.0",
+    "yarl>=1.9.0,<2.0.0",
+    "openpyxl>=3.1.0,<4.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0,<9.0.0",
+    "pytest-asyncio>=0.23.0,<0.25.0",
+    "respx>=0.21.0,<0.22.0",
+    "ruff>=0.5.0,<0.7.0",
+]
+
+[project.scripts]
+url-link-extractor = "url_link_extractor.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["url_link_extractor*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP"]
+ignore = ["E501"]

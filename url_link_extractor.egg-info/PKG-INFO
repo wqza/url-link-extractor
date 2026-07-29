@@ -1,3 +1,21 @@
+Metadata-Version: 2.4
+Name: url-link-extractor
+Version: 0.1.0
+Summary: URL 链接标题批量提取组件：按 URL 前缀发现匹配网页链接并提取 <title>，导出 result.xlsx
+Author: url-link-extractor
+License: MIT
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: httpx<0.28.0,>=0.27.0
+Requires-Dist: selectolax<0.4.0,>=0.3.0
+Requires-Dist: yarl<2.0.0,>=1.9.0
+Requires-Dist: openpyxl<4.0.0,>=3.1.0
+Provides-Extra: dev
+Requires-Dist: pytest<9.0.0,>=8.0.0; extra == "dev"
+Requires-Dist: pytest-asyncio<0.25.0,>=0.23.0; extra == "dev"
+Requires-Dist: respx<0.22.0,>=0.21.0; extra == "dev"
+Requires-Dist: ruff<0.7.0,>=0.5.0; extra == "dev"
+
 # url-link-extractor
 
 URL 链接标题批量提取组件：按指定 URL 前缀批量发现所有匹配网页链接，提取每个网页的 `<title>` 标题，输出"链接-标题"配对结果集，并导出为 `result.xlsx` Excel 文件。
